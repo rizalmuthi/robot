@@ -34,6 +34,19 @@ class Robot
     @direction = DIRECTIONS[(DIRECTIONS.index(@direction) + 1) % 4]
   end
 
+  def next_move
+    case direction
+    when "NORTH"
+      [x_coord, (y_coord + 1)]
+    when "SOUTH"
+      [x_coord, (y_coord - 1)]
+    when "EAST"
+      [(x_coord + 1), y_coord]
+    when "WEST"
+      [(x_coord - 1), y_coord]
+    end
+  end
+
   private
   attr_reader :x_coord, :y_coord, :direction
 

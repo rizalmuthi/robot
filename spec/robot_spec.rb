@@ -131,4 +131,36 @@ describe Robot do
       end
     end
   end
+
+  describe "#next_move" do
+    context "when the direction is NORTH" do
+      it "returns an array of next location" do
+        expect(robot.next_move).to eq([1,2])
+      end
+    end
+
+    context "when the direction is SOUTH" do
+      let(:direction) { "SOUTH" }
+
+      it "returns an array of next location" do
+        expect(robot.next_move).to eq([1,0])
+      end
+    end
+
+    context "when the direction is EAST" do
+      let(:direction) { "EAST" }
+
+      it "returns an array of next location" do
+        expect(robot.next_move).to eq([2,1])
+      end
+    end
+
+    context "when the direction is WEST" do
+      let(:direction) { "WEST" }
+
+      it "returns an array of next location" do
+        expect(robot.next_move).to eq([0,1])
+      end
+    end
+  end
 end
