@@ -26,6 +26,14 @@ class Robot
     }
   end
 
+  def left
+    @direction = DIRECTIONS[(DIRECTIONS.index(@direction) - 1) % 4]
+  end
+
+  def right
+    @direction = DIRECTIONS[(DIRECTIONS.index(@direction) + 1) % 4]
+  end
+
   private
   attr_reader :x_coord, :y_coord, :direction
 
