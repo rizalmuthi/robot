@@ -120,6 +120,33 @@ describe CommandParser do
     end
 
     context "when the comamnd is REPOT" do
+      context "and the robot is placed" do
+        let(:robot) { instance_double(Robot) }
+        let(:report) do
+          {
+            x_coord: 0,
+            y_coord: 0,
+            direction: "NORTH"
+          }
+        end
+
+        before do
+          allow(Robot).to receive(:new).and_return(robot)
+          command_parser.parse("PLACE 0,0,NORTH")
+        end
+
+        it "tells robot to report" do
+          expect(robot).to receive(:report).and_return(report)
+
+          command_parser.parse("REPORT")
+        end
+      end
+
+      context "and the robot is not placed yet" do
+        it "does not raise any error" do
+          expect { command_parser.parse("REPORT") }.to_not raise_error
+        end
+      end
     end
 
     context "when the command is invalid" do

@@ -28,7 +28,6 @@ class CommandParser
 
       x_coord, y_coord = robot.next_move
       return unless table.valid_position?(x_coord: x_coord, y_coord: y_coord)
-      puts "here"
       robot.move
     when /^LEFT$/
       return if robot_not_placed?
